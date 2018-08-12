@@ -5,9 +5,9 @@ What happens, if you give someone a visiting card? Either he manually types the 
 
 Other available visitingcard templates, such as [mschlenker] distribute the cards on a A4 paper. But if you want a profesional printer, such as [onlineprinters], then you need to be able to generate a PDF with exactly one card, an exactly defined border and crop marks. That's why I wrote this template.
 
-[![Example: John Doe from Hongkong](screenshots/john-doe-hongkong.jpg)](examples/john-doe-hongkong.tex)
-[![Example: Businesscard of Peter Muster from Zürich](screenshots/peter-muster-example-company-zuerich.jpg)](examples/peter-muster-example-company-zuerich.tex)
-[![Example: Nearly Real Examle Of My Card](screenshots/example.jpg)](examples/example.tex)
+[<img title="Example: John Doe from Hongkong" src="screenshots/john-doe-hongkong.jpg">](examples/john-doe-hongkong.tex)
+[<img title="Example: Businesscard of Peter Muster from Zürich" src="screenshots/peter-muster-example-company-zuerich.jpg">](examples/peter-muster-example-company-zuerich.tex)
+[<img title="Example: Nearly Real Examle Of My Card" src="screenshots/example.jpg">](examples/example.tex)
 
 
 Features
