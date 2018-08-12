@@ -144,7 +144,7 @@ Need More
 If you are missing a feature or a configuration option, just open a [ticket] and I will care about it.
 
 [ticket]: https://mrw.sh/templates/latex/issues "open issues and tickets for my LaTeX-templates project"
-[example]: examples "more examples"
+[examples]: examples "more examples"
 [app]: https://f-droid.org/de/packages/com.google.zxing.client.android/ "Barcode Scanner"
 [onlineprinters]: https://de.onlineprinters.ch/k/standardvisitenkarten "onlineprinters.ch"
 [mschlenker]: https://gist.github.com/mschlenker/f60e0f15ff1edfc4881c "visitenkarten-qr.tex"
