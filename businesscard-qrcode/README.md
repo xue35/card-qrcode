@@ -1,9 +1,9 @@
 Businesscard with QR-Code
 =========================
 
-What happens, if you give someone a visiting card? Either he manually types the text into the mobilefone, or it will end up in a box and be forgotten. Here is the solution: A visiting card with QR-Code, so that it can be scanned with an [app] on the mobilefone and therefore automatically imported into the electronic contacts. This also works well, when yoiu are offline and bluetooth transfer fails. So here os the highly configurable businescard or visitingcards with full VCARD as QR-Code, ready to send to online printers.
+What happens, if you give your visitin card to someone? Either he manually types the text into his computer or mobilefone, or it will end up in a box and be forgotten. Nowadays data is required electronically, not on paper. Here is the solution: A visiting card with QR-Code that contains a full [vcard], so that it can be scanned with an [app] on the mobilefone and therefore automatically imported into the electronic contacts. This also works well, when you are offline and bluetooth transfer fails. So here is the highly configurable businescard or visitingcards with full [vcard] as QR-Code, ready to send to online printers.
 
-Other available visitingcard templates, such as [mschlenker] distribute the cards on a A4 paper. But if you want a profesional printer, such as [onlineprinters], then you need to be able to generate a PDF with exactly one card, an exactly defined border and crop marks. That's why I wrote this template.
+Other available visitingcard templates, such as [mschlenker] distribute the cards on an A4 paper. But if you want a professional printer, such as [onlineprinters], then you need to be able to generate a PDF with exactly one card, an exactly defined border and crop marks. That's why I wrote this template: You can specify the exact size of the paper and the content within the paper, inluding generation of crop marks.
 
 [![Example: John Doe from Hongkong](screenshots/john-doe-hongkong.jpg)](examples/john-doe-hongkong.tex)
 [![Example: Businesscard of Peter Muster from Zürich](screenshots/peter-muster-example-company-zuerich.jpg)](examples/peter-muster-example-company-zuerich.tex)
@@ -14,11 +14,11 @@ Features
 --------
 
 - all information is in the QR-Code
-- full privacy: input is optional, specify only what you need, you decide what information to share
+- full privacy control: input is optional, specify only what you need, you decide what information to share, e.g. I print three cards, with phone and address, without address and only with electronical contacts, no phone nor address
 - optional icons, optional small hint texts
-- several alignents
-- freely size of paper and content
-- supports honoric titles, full names, address woth post office box and extended information
+- several alignments
+- freely defined size of paper and content
+- supports honoric titles, full names, address with post office box and extended information
 - supports telefone, email, [jabber] and [matrix] chat
 - supports several urls for your hompages
 - supports [gitea], [github], [git]
@@ -30,7 +30,7 @@ Features
 Usage Example
 -------------
 
-*Important*: You must use `xelatex` for compilation, because `xelatex` properly supports UTF-8 (e.g. needed for german umlauts or chinese characters). The package `inputenc` messes up with package `qrcode`.
+**Important:** You must use **`xelatex`** for compilation, because `xelatex` properly supports UTF-8 (e.g. needed for german umlauts or chinese characters). The package `inputenc` messes up with package `qrcode`.
 
 Include the documentclass, define your date and add the document part:
 
@@ -91,6 +91,10 @@ Available options:
 - `qrfirst` or `textfirst`: switch position of QR-Code and text block, default: `qrfirst`
 - `https` or `www`: should links in the hints be prefixed with `https://` or `www.`, default: `https`
 
+
+Data Definitions
+----------------
+
 Your data is entered as definitions in the document, e.g.:
 
     \def\email{name@example.com}
@@ -145,6 +149,7 @@ If you are missing a feature or a configuration option, just open a [ticket] and
 
 [ticket]: https://mrw.sh/templates/latex/issues "open issues and tickets for my LaTeX-templates project"
 [examples]: examples "more examples"
+[vcard]: https://tools.ietf.org/html/rfc6350 "RFC 6350, vCard Format Specification Version 4.0"
 [app]: https://f-droid.org/de/packages/com.google.zxing.client.android/ "Barcode Scanner"
 [onlineprinters]: https://de.onlineprinters.ch/k/standardvisitenkarten "onlineprinters.ch"
 [mschlenker]: https://gist.github.com/mschlenker/f60e0f15ff1edfc4881c "visitenkarten-qr.tex"
