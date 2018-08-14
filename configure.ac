@@ -1,5 +1,5 @@
 #AC_PREREQ([2.69])
-AC_INIT([businesscard-qrcode], [1.0], [marc@waeckerlin.org])
+AC_INIT([businesscard-qrcode], [1.1], [marc@waeckerlin.org])
 AM_INIT_AUTOMAKE([1.9 tar-pax])
 
 AC_ARG_WITH([latexdir],
