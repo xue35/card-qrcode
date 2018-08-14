@@ -1,0 +1,8 @@
+examplesdir = ${docdir}/examples
+dist_examples_DATA = $(EXAMPLES:%=%.tex) $(EXAMPLES:%=%.pdf)
+
+%.pdf:%.tex
+	xelatex -synctex=1 -interaction=nonstopmode $<
+
+CLEANFILES = $(EXAMPLES:%=%.aux) $(EXAMPLES:%=%.log) $(EXAMPLES:%=%.synctex.gz)
+MAINTAINERCLEANFILES = makefile.in

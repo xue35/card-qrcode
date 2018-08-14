@@ -1,0 +1,11 @@
+EXAMPLES = example john-doe-hongkong					\
+           peter-muster-example-company-zuerich special-papersize	\
+           texstudio_d30266
+
+screenshotdir=${docdir}/screenshots
+dist_screenshot_DATA=$(EXAMPLES:%=%.jpg)
+
+%.jpg:${top_srcdir}/examples/%.pdf
+	convert -density 200 -quality 90 $< $@
+
+MAINTAINERCLEANFILES = makefile.in

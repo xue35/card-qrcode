@@ -1,0 +1,12 @@
+AUTOMAKE_OPTIONS = foreign
+
+SUBDIRS = examples screenshots
+
+dist_latex_DATA = @PACKAGE_NAME@.cls
+dist_doc_DATA = README.md @PACKAGE_NAME@.pdf
+
+@PACKAGE_NAME@.pdf: README.md
+	pandoc --toc --latex-engine=xelatex -o $@ $<
+
+CLEANFILES = @PACKAGE_NAME@.pdf
+MAINTAINERCLEANFILES = makefile.in aclocal.m4 configure install-sh missing

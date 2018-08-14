@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{businesscard-qrcode}[2018/08/13 cleanup and bug fixes]
+\ProvidesClass{businesscard-qrcode}[2018/08/14 version 1.0 ready for ctan]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % option evaluation
@@ -75,6 +75,49 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% data registration
+\newcommand\registerData[1]{
+	\expandafter\newcommand\csname #1\endcsname[1]{
+		\expandafter\def\csname X#1\endcsname{##1}
+	}
+}
+\registerData{type}
+\registerData{givennames}
+\registerData{familynames}
+\registerData{honoricprefix}
+\registerData{honoricsuffix}
+\registerData{additionalnames}
+\registerData{pobox}
+\registerData{extaddr}
+\registerData{street}
+\registerData{city}
+\registerData{region}
+\registerData{zip}
+\registerData{country}
+\registerData{phone}
+\registerData{email}
+\registerData{jabber}
+\registerData{matrixorg}
+\registerData{cloud}
+\registerData{homepage}
+\registerData{wordpress}
+\registerData{drupal}
+\registerData{joomla}
+\registerData{wikipedia}
+\registerData{link}
+\registerData{world}
+\registerData{git}
+\registerData{gitea}
+\registerData{github}
+\registerData{facebook}
+\registerData{twitter}
+\registerData{youtube}
+\registerData{google}
+\registerData{pgpurl}
+\registerData{pgpfingerprint}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % auxiliary commands
 \newcommand\enforceright{\leftskip0pt plus 1fill\rightskip0pt}
 \newcommand\exec[1]{\csname #1\endcsname}
@@ -90,42 +133,42 @@
 \newcommand\ifboth[3]{\ifcsdef{#1}{\ifcsdef{#2}{#3}{}}{}}
 \newcommand\ifany[3]{\ifcsdef{#1}{#3}{\ifcsdef{#2}{#3}{}}}
 \newcommand\cond[1]{\ifcsdef{#1}{\exec{#1}}{}}
-\newcommand\heightscale{\dimexpr\textheight-\ifcsempty{name}{0em}{2em}-\ifcsdef{pgpfingerprint}{2em}{0em}-\ifcsdef{additionalnames}{2em}{0em}\relax}
+\newcommand\heightscale{\dimexpr\textheight-\ifcsempty{name}{0em}{2em}-\ifcsdef{Xpgpfingerprint}{2em}{0em}-\ifcsdef{Xadditionalnames}{2em}{0em}\relax}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% name - assemble full name from the parts, such as givennames and familynames
-\newcommand\name{\ifexists{honoricprefix}{\honoricprefix\ }\ifexists{givennames}{\givennames\ }\ifexists{familynames}{\familynames}\ifexists{honoricsuffix}{\ \honoricsuffix}}
+% name - assemble full name from the parts, such as Xgivennames and Xfamilynames
+\newcommand\name{\ifexists{Xhonoricprefix}{\Xhonoricprefix\ }\ifexists{Xgivennames}{\Xgivennames\ }\ifexists{Xfamilynames}{\Xfamilynames}\ifexists{Xhonoricsuffix}{\ \Xhonoricsuffix}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % vcard - the content of the vcard
 \newcommand\vcard{BEGIN:VCARD^^J
 VERSION:4.0^^J
-N:\cond{familynames};\cond{givennames};\cond{additionalnames};\cond{honoricprefix};\cond{honoricsuffix}^^J
-FN:\name\ifexists{additionalnames}{\ifcsempty{name}{}{\ }\additionalnames}^^J
-\ifexists{printaddress}{ADR\ifexists{type}{;TYPE=\type}:\cond{pobox};\cond{extaddr};\cond{street};\cond{city};\cond{region};\cond{zip};\cond{country}^^J}
-\ifexists{phone}{TEL;VALUE=uri;TYPE=\ifexists{type}{\type,}voice,text:tel:\phone^^J}
-\ifexists{email}{EMAIL\ifexists{type}{;TYPE=\type}:\email^^J}
-\ifexists{jabber}{IMPP;TYPE=XMPP:\jabber^^J}
-\ifexists{matrixorg}{IMPP;TYPE=MATRIX:\matrixorg^^J}
-\ifexists{cloud}{URL:https://nextcloud.com/federation/\#\cloud^^J}
-\ifexists{homepage}{URL:https://\homepage^^J}
-\ifexists{wordpress}{URL:https://\wordpress^^J}
-\ifexists{drupal}{URL:https://\drupal^^J}
-\ifexists{joomla}{URL:https://\joomla^^J}
-\ifexists{wikipedia}{URL:https://\lang.wikipedia.org/wiki/\wikipedia^^J}
-\ifexists{link}{URL:https://\link^^J}
-\ifexists{world}{URL:https://\world^^J}
-\ifexists{git}{URL:https://\git^^J}
-\ifexists{gitea}{URL:https://\gitea^^J}
-\ifexists{github}{URL:https://github.com/\github^^J}
-\ifexists{facebook}{URL:https://facebook.com/\facebook^^J}
-\ifexists{twitter}{URL:https://twitter.com/\twitter^^J}
-\ifexists{youtube}{URL:https://youtube.com/user/\youtube^^J}
-\ifexists{google}{URL:https://plus.google.com/+\google^^J}
-\ifexists{pgpurl}{KEY;MEDIATYPE=application/pgp-keys:\pgpurl^^J}
-\ifexists{pgpfingerprint}{KEY:data:application/x-pgp-fingerprint,\pgpfingerprint^^J}
+N:\cond{Xfamilynames};\cond{Xgivennames};\cond{Xadditionalnames};\cond{Xhonoricprefix};\cond{Xhonoricsuffix}^^J
+FN:\name\ifexists{Xadditionalnames}{\ifcsempty{name}{}{\ }\Xadditionalnames}^^J
+\ifexists{printaddress}{ADR\ifexists{Xtype}{;TYPE=\Xtype}:\cond{Xpobox};\cond{Xextaddr};\cond{Xstreet};\cond{Xcity};\cond{Xregion};\cond{Xzip};\cond{Xcountry}^^J}
+\ifexists{Xphone}{TEL;VALUE=uri;TYPE=\ifexists{Xtype}{\Xtype,}voice,text:tel:\Xphone^^J}
+\ifexists{Xemail}{EMAIL\ifexists{Xtype}{;TYPE=\Xtype}:\Xemail^^J}
+\ifexists{Xjabber}{IMPP;TYPE=XMPP:\Xjabber^^J}
+\ifexists{Xmatrixorg}{IMPP;TYPE=MATRIX:\Xmatrixorg^^J}
+\ifexists{Xcloud}{URL:https://nextcloud.com/federation/\#\Xcloud^^J}
+\ifexists{Xhomepage}{URL:https://\Xhomepage^^J}
+\ifexists{Xwordpress}{URL:https://\Xwordpress^^J}
+\ifexists{Xdrupal}{URL:https://\Xdrupal^^J}
+\ifexists{Xjoomla}{URL:https://\Xjoomla^^J}
+\ifexists{Xwikipedia}{URL:https://\lang.wikipedia.org/wiki/\Xwikipedia^^J}
+\ifexists{Xlink}{URL:https://\Xlink^^J}
+\ifexists{Xworld}{URL:https://\Xworld^^J}
+\ifexists{Xgit}{URL:https://\Xgit^^J}
+\ifexists{Xgitea}{URL:https://\Xgitea^^J}
+\ifexists{Xgithub}{URL:https://github.com/\Xgithub^^J}
+\ifexists{Xfacebook}{URL:https://facebook.com/\Xfacebook^^J}
+\ifexists{Xtwitter}{URL:https://twitter.com/\Xtwitter^^J}
+\ifexists{Xyoutube}{URL:https://youtube.com/user/\Xyoutube^^J}
+\ifexists{Xgoogle}{URL:https://plus.google.com/+\Xgoogle^^J}
+\ifexists{Xpgpurl}{KEY;MEDIATYPE=application/pgp-keys:\Xpgpurl^^J}
+\ifexists{Xpgpfingerprint}{KEY:data:application/x-pgp-fingerprint,\Xpgpfingerprint^^J}
 END:VCARD^^J}
 
 
@@ -133,15 +176,15 @@ END:VCARD^^J}
 % address - the address as shown in the textbox
 \newcommand\address{
 	
-	\cond{pobox}
+	\cond{Xpobox}
 
-	\cond{extaddr}
+	\cond{Xextaddr}
 	
-	\cond{street}
+	\cond{Xstreet}
 	
-	\cond{zip} \cond{city}
+	\cond{Xzip} \cond{Xcity}
 	
-	\cond{region} \cond{country}
+	\cond{Xregion} \cond{Xcountry}
 	
 }
 
@@ -174,7 +217,7 @@ END:VCARD^^J}
 			\vspace{1em}
 		}
 	
-		\insa[tel:]{phone}{faMobile}\insa[mailto:]{email}{Email}\insa[xmpp]{jabber}{faCommentsO}\insa[matrix.org]{matrixorg}{faCommentsO}\insa[nextcloud-id]{cloud}{faCloud}\insa[\protdisplay]{homepage}{faHome}\insa[\protdisplay]{wordpress}{faWordpress}\insa[\protdisplay]{drupal}{faDrupal}\insa[\protdisplay]{joomla}{faJoomla}\insa[{\protprefix}\lang.wikipedia.org/wiki/]{wikipedia}{faWikipediaW}\insa[\protdisplay]{link}{faLink}\insa[\protdisplay]{world}{faGlobe}\insa[\protdisplay]{git}{faGit}\insa[\protdisplay]{gitea}{faGithubAlt}\insa[{\protprefix}github.com/]{github}{faGithub}\insa[{\protprefix}facebook.com/]{facebook}{faFacebook}\insa[{\protprefix}twitter.com/]{twitter}{faTwitter}\insa[{\protprefix}youtube.com/user/]{youtube}{faYoutube}\insa[{\protprefix}plus.google.com/+]{google}{faGooglePlus}
+		\insa[tel:]{Xphone}{faMobile}\insa[mailto:]{Xemail}{Email}\insa[xmpp]{Xjabber}{faCommentsO}\insa[matrix.org]{Xmatrixorg}{faCommentsO}\insa[nextcloud-id]{Xcloud}{faCloud}\insa[\protdisplay]{Xhomepage}{faHome}\insa[\protdisplay]{Xwordpress}{faWordpress}\insa[\protdisplay]{Xdrupal}{faDrupal}\insa[\protdisplay]{Xjoomla}{faJoomla}\insa[{\protprefix}\lang.wikipedia.org/wiki/]{Xwikipedia}{faWikipediaW}\insa[\protdisplay]{Xlink}{faLink}\insa[\protdisplay]{Xworld}{faGlobe}\insa[\protdisplay]{Xgit}{faGit}\insa[\protdisplay]{Xgitea}{faGithubAlt}\insa[{\protprefix}github.com/]{Xgithub}{faGithub}\insa[{\protprefix}facebook.com/]{Xfacebook}{faFacebook}\insa[{\protprefix}twitter.com/]{Xtwitter}{faTwitter}\insa[{\protprefix}youtube.com/user/]{Xyoutube}{faYoutube}\insa[{\protprefix}plus.google.com/+]{Xgoogle}{faGooglePlus}
 
 		\ifBCQ@rightalign\end{flushright}\fi
 	\end{minipage}
@@ -204,7 +247,7 @@ END:VCARD^^J}
 		
 			\cond{name}
 		
-			\cond{additionalnames}
+			\cond{Xadditionalnames}
 		
 		}
 	%\end{minipage}
@@ -226,12 +269,12 @@ END:VCARD^^J}
 			\hfill
 			\insertqrcode
 		\fi
-		\ifexists{pgpfingerprint}{
+		\ifexists{Xpgpfingerprint}{
 			\vfill
 			\ifBCQ@iconleft
-				\faLock\ifBCQ@hint{\tiny\ pgp}\fi\hfill{\small\pgpfingerprint}
+				\faLock\ifBCQ@hint{\tiny\ pgp}\fi\hfill{\small\Xpgpfingerprint}
 			\else
-				{\small\pgpfingerprint}\hfill\ifBCQ@hint{\tiny{pgp\ }}\fi\faLock
+				{\small\Xpgpfingerprint}\hfill\ifBCQ@hint{\tiny{pgp\ }}\fi\faLock
 			\fi
 		}
 	\ifBCQ@rightalign\end{flushright}\fi
