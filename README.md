@@ -198,7 +198,7 @@ See [examples] for more examples.
 Need More
 =========
 
-If you are missing a feature or a configuration option, consult the [project] page. Just open a [ticket] and the [author] will care about it. Er extend it, it's [lgpl].
+If you are missing a feature or a configuration option, consult the [project] page. Just open a [ticket] and the [author] will care about it. Or extend it, it's [lgpl].
 
 
 
@@ -229,4 +229,4 @@ If you are missing a feature or a configuration option, consult the [project] pa
 [ticket]: https://mrw.sh/templates/businesscard-qrcode/issues "open issues and tickets for my LaTeX-templates project"
 [author]: https://marc.wäckerlin.ch "Marc Wäckerlin"
 [project]: https://mrw.sh/templates/businesscard-qrcode "the main project page"
-[lgpl] https://www.gnu.org/licenses/lgpl-3.0 "Library GNU Public License"
+[lgpl]: https://www.gnu.org/licenses/lgpl-3.0 "Library GNU Public License"
