@@ -1,5 +1,7 @@
+% Author:  Marc Wäckerlin
+% License: LGPL
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{businesscard-qrcode}[2018/08/14 version 1.0 ready for ctan]
+\ProvidesClass{businesscard-qrcode}[2018/08/15 version 1.2 ready for ctan]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % option evaluation
